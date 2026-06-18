@@ -33,10 +33,11 @@ public class RegisterFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.btnSignUp.setOnClickListener(v -> {
+            String name = binding.etName.getText().toString().trim();
             String username = binding.etUsername.getText().toString().trim();
             String password = binding.etPassword.getText().toString().trim();
 
-            if (username.isEmpty() || password.isEmpty()) {
+            if (name.isEmpty() || username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
             } else {
                 // Check if user already exists
@@ -45,8 +46,8 @@ public class RegisterFragment extends Fragment {
                     Toast.makeText(getContext(), "Username already exists!", Toast.LENGTH_SHORT).show();
                 } else {
                     // Save to SQLite
-                    db.userDao().registerUser(new User(username, password));
-                    Toast.makeText(getContext(), "Registration successful for " + username, Toast.LENGTH_SHORT).show();
+                    db.userDao().registerUser(new User(name, username, password));
+                    Toast.makeText(getContext(), "Registration successful for " + name, Toast.LENGTH_SHORT).show();
                     NavHostFragment.findNavController(RegisterFragment.this).navigateUp();
                 }
             }

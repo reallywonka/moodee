@@ -9,7 +9,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.moodee.databinding.ActivityMainBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Logika Show/Hide Bottom Navigation
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if (destination.getId() == R.id.HomeFragment) {
-                // Tampilkan hanya di Dashboard/Home
+            int id = destination.getId();
+            if (id == R.id.navigation_home || id == R.id.navigation_journal || id == R.id.navigation_settings) {
+                // Tampilkan di halaman utama
                 binding.bottomNav.setVisibility(View.VISIBLE);
             } else {
                 // Sembunyikan di Landing, Login, Register, dll.

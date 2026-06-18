@@ -43,15 +43,23 @@ public class LoginFragment extends Fragment {
 
             User user = db.userDao().login(username, password);
             if (user != null) {
-                Toast.makeText(getContext(), "Login Successful! Welcome " + username, Toast.LENGTH_SHORT).show();
+                // Simpan sesi user (Termasuk Nama)
+                android.content.SharedPreferences pref = requireContext().getSharedPreferences("moodee_pref", android.content.Context.MODE_PRIVATE);
+                pref.edit()
+                        .putInt("user_id", user.id)
+                        .putString("username", user.username)
+                        .putString("name", user.name)
+                        .apply();
+
+                Toast.makeText(getContext(), "Login Successful! Welcome " + user.name, Toast.LENGTH_SHORT).show();
+                // Pindah ke Home menggunakan ID baru yang sesuai dengan Bottom Nav
                 NavHostFragment.findNavController(LoginFragment.this)
-                        .navigate(R.id.action_LoginFragment_to_HomeFragment);
+                        .navigate(R.id.action_LoginFragment_to_navigation_home);
             } else {
                 Toast.makeText(getContext(), "Login Failed", Toast.LENGTH_SHORT).show();
             }
         });
 
-        // Perbaikan ID di sini: txtForgotPassword (sesuai ViewBinding)
         binding.txtForgotPassword.setOnClickListener(v -> {
             NavHostFragment.findNavController(LoginFragment.this)
                     .navigate(R.id.action_LoginFragment_to_ForgotPasswordFragment);
