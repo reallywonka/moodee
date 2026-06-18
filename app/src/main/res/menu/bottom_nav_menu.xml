@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_journal"
+        android:icon="@drawable/journals_icon"
+        android:title="Journals"
+        android:iconTint="@color/white"/>
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/home_icon"
+        android:title="Home"
+        android:iconTint="@color/white"/>
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/settings_icon"
+        android:title="Settings"
+        android:iconTint="@color/white"/>
+
+</menu>
