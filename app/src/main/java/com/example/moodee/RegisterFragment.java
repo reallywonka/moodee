@@ -11,16 +11,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.moodee.database.AppDatabase;
+import com.example.moodee.database.User;
 import com.example.moodee.databinding.FragmentRegisterBinding;
 
 public class RegisterFragment extends Fragment {
 
     private FragmentRegisterBinding binding;
+    private AppDatabase db;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentRegisterBinding.inflate(inflater, container, false);
+        db = AppDatabase.getDatabase(requireContext());
         return binding.getRoot();
     }
 
@@ -29,15 +33,22 @@ public class RegisterFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.btnSignUp.setOnClickListener(v -> {
-            String username = binding.etUsername.getText().toString();
-            String password = binding.etPassword.getText().toString();
+            String username = binding.etUsername.getText().toString().trim();
+            String password = binding.etPassword.getText().toString().trim();
 
             if (username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
             } else {
-                // Logic to save to SQLite will go here
-                Toast.makeText(getContext(), "Registration successful for " + username, Toast.LENGTH_SHORT).show();
-                NavHostFragment.findNavController(RegisterFragment.this).navigateUp();
+                // Check if user already exists
+                User existingUser = db.userDao().getUserByUsername(username);
+                if (existingUser != null) {
+                    Toast.makeText(getContext(), "Username already exists!", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Save to SQLite
+                    db.userDao().registerUser(new User(username, password));
+                    Toast.makeText(getContext(), "Registration successful for " + username, Toast.LENGTH_SHORT).show();
+                    NavHostFragment.findNavController(RegisterFragment.this).navigateUp();
+                }
             }
         });
 

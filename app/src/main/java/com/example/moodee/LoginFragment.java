@@ -44,9 +44,10 @@ public class LoginFragment extends Fragment {
             User user = db.userDao().login(username, password);
             if (user != null) {
                 Toast.makeText(getContext(), "Login Successful! Welcome " + username, Toast.LENGTH_SHORT).show();
-                // Nanti kita arahkan ke HomeFragment di sini
+                NavHostFragment.findNavController(LoginFragment.this)
+                        .navigate(R.id.action_LoginFragment_to_HomeFragment);
             } else {
-                Toast.makeText(getContext(), "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Login Failed", Toast.LENGTH_SHORT).show();
             }
         });
 
