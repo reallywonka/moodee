@@ -17,7 +17,7 @@
         android:src="@android:drawable/ic_menu_close_clear_cancel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/green" />
+        app:tint="@color/brown" />
 
     <TextView
         android:id="@+id/txt_header"
@@ -38,10 +38,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:backgroundTint="@color/green"
+        android:fontFamily="@font/poppins_medium"
         android:text="Save"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        app:cornerRadius="20dp"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="@id/btn_close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/btn_close" />
@@ -68,6 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins"
             android:text="Thursday, June 18"
             android:textColor="@color/brown"
             android:textSize="13sp" />
@@ -81,9 +83,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_mood_tag"
+            android:fontFamily="@font/poppins"
             android:paddingHorizontal="10dp"
             android:paddingVertical="2dp"
-            android:text="Biasa"
+            android:text="Neutral"
             android:textColor="@color/green"
             android:textSize="11sp"
             android:textStyle="bold" />
@@ -97,7 +100,7 @@
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="16dp"
         android:background="@null"
-        android:fontFamily="@font/poppins_black"
+        android:fontFamily="@font/poppins_bold"
         android:hint="Title (Optional)"
         android:inputType="textCapSentences"
         android:textColor="@color/green"
@@ -130,6 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
+            android:fontFamily="@font/poppins"
             android:gravity="top"
             android:hint="Start writing..."
             android:inputType="textMultiLine|textCapSentences"

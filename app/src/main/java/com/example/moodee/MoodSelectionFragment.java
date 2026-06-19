@@ -22,7 +22,7 @@ import java.util.Locale;
 public class MoodSelectionFragment extends Fragment {
 
     private FragmentMoodSelectionBinding binding;
-    private String selectedMood = "biasa"; // Default mood
+    private String selectedMood = "Neutral"; // Default mood (Biasa)
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -35,7 +35,7 @@ public class MoodSelectionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // 1. Tampilkan Tanggal & Waktu Otomatis (sesuai mockup)
+        // 1. Tampilkan Tanggal & Waktu Otomatis
         String currentDate = new SimpleDateFormat("EEEE, dd MMMM", new Locale("id", "ID")).format(new Date());
         String currentTime = new SimpleDateFormat("HH.mm", Locale.getDefault()).format(new Date());
         
@@ -59,14 +59,14 @@ public class MoodSelectionFragment extends Fragment {
     }
 
     private void setupMoodClickListeners() {
-        binding.moodKeren.setOnClickListener(v -> selectMood("keren", binding.imgKeren));
-        binding.moodBaik.setOnClickListener(v -> selectMood("baik", binding.imgBaik));
-        binding.moodBiasa.setOnClickListener(v -> selectMood("biasa", binding.imgBiasa));
-        binding.moodBuruk.setOnClickListener(v -> selectMood("buruk", binding.imgBuruk));
-        binding.moodSangatBuruk.setOnClickListener(v -> selectMood("sangat buruk", binding.imgSangatBuruk));
+        binding.moodKeren.setOnClickListener(v -> selectMood("Amazing", binding.imgKeren));
+        binding.moodBaik.setOnClickListener(v -> selectMood("Good", binding.imgBaik));
+        binding.moodBiasa.setOnClickListener(v -> selectMood("Neutral", binding.imgBiasa));
+        binding.moodBuruk.setOnClickListener(v -> selectMood("Bad", binding.imgBuruk));
+        binding.moodSangatBuruk.setOnClickListener(v -> selectMood("Awful", binding.imgSangatBuruk));
         
-        // Pilih mood 'biasa' sebagai default visual
-        selectMood("biasa", binding.imgBiasa);
+        // Pilih mood 'Neutral' sebagai default visual
+        selectMood("Neutral", binding.imgBiasa);
     }
 
     private void selectMood(String mood, ImageView selectedImage) {

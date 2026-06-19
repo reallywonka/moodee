@@ -60,9 +60,6 @@
         <action
             android:id="@+id/action_LoginFragment_to_RegisterFragment"
             app:destination="@id/RegisterFragment" />
-        <action
-            android:id="@+id/action_LoginFragment_to_ForgotPasswordFragment"
-            app:destination="@id/ForgotPasswordFragment" />
     </fragment>
 
     <fragment
@@ -70,12 +67,6 @@
         android:name="com.example.moodee.RegisterFragment"
         android:label="Register"
         tools:layout="@layout/fragment_register" />
-
-    <fragment
-        android:id="@+id/ForgotPasswordFragment"
-        android:name="com.example.moodee.ForgotPasswordFragment"
-        android:label="Forgot Password"
-        tools:layout="@layout/fragment_forgot_password" />
 
     <fragment
         android:id="@+id/navigation_home"

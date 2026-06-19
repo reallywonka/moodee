@@ -47,6 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_medium"
         android:text="Join us to start your journey."
         android:textColor="@color/brown"
         android:textSize="14sp"
@@ -74,6 +75,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Full Name"
                 android:textColor="@color/brown"
                 android:textSize="12sp" />
@@ -90,6 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
                     android:hint="Jane Doe"
                     android:inputType="textPersonName"
                     android:textColor="@color/green" />
@@ -99,6 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Username"
                 android:textColor="@color/brown"
                 android:textSize="12sp" />
@@ -115,6 +119,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
                     android:hint="choose a username"
                     android:inputType="text"
                     android:textColor="@color/green" />
@@ -124,6 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Password"
                 android:textColor="@color/brown"
                 android:textSize="12sp" />
@@ -141,6 +147,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
                     android:hint="create a password"
                     android:inputType="textPassword"
                     android:textColor="@color/green" />
@@ -152,6 +159,7 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="32dp"
                 android:backgroundTint="@color/green"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Sign Up"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
@@ -165,6 +173,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:fontFamily="@font/poppins"
         android:text="Already have an account? Sign In"
         android:textColor="@color/brown"
         android:textSize="14sp"

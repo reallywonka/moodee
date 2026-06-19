@@ -28,7 +28,7 @@
         android:layout_marginTop="80dp"
         android:fontFamily="@font/poppins_black"
         android:gravity="center"
-        android:text="Bagaimana kabarmu sekarang?"
+        android:text="How's your day?"
         android:textColor="@color/green"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -104,15 +104,15 @@
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/img_keren"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/cool_emoji"
                 android:alpha="0.5" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="keren"
+                android:text="Amazing"
                 android:textColor="@color/green"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -127,15 +127,15 @@
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/img_baik"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/happy_emoji"
                 android:alpha="0.5" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="baik"
+                android:text="Good"
                 android:textColor="@color/green"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -150,15 +150,15 @@
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/img_biasa"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/neutral_emoji"
                 android:alpha="0.5" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="biasa"
+                android:text="Neutral"
                 android:textColor="@color/green"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -173,15 +173,15 @@
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/img_buruk"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/bad_emoji"
                 android:alpha="0.5" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="buruk"
+                android:text="Bad"
                 android:textColor="@color/green"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -196,18 +196,18 @@
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/img_sangat_buruk"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/reallybad_emoji"
                 android:alpha="0.5" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="sangat buruk"
+                android:text="Awful"
                 android:gravity="center"
                 android:textColor="@color/green"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -236,8 +236,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Lanjutkan"
-            android:textColor="@color/green"
+            android:text="Next"
+            android:textColor="@color/brown"
             android:textSize="14sp" />
     </LinearLayout>
 

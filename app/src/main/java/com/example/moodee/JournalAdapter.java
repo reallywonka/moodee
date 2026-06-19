@@ -63,22 +63,24 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
             binding.txtItemDate.setText(journal.date);
             binding.txtItemContent.setText(journal.content);
 
-            // Set mood icon
+            // Set mood icon (Gunakan ignore case agar lebih aman)
             int moodResId;
-            switch (journal.mood.toLowerCase()) {
-                case "keren":
+            String mood = journal.mood != null ? journal.mood : "Neutral";
+
+            switch (mood) {
+                case "Amazing":
                     moodResId = R.drawable.cool_emoji;
                     break;
-                case "baik":
+                case "Good":
                     moodResId = R.drawable.happy_emoji;
                     break;
-                case "buruk":
+                case "Bad":
                     moodResId = R.drawable.bad_emoji;
                     break;
-                case "sangat buruk":
+                case "Awful":
                     moodResId = R.drawable.reallybad_emoji;
                     break;
-                case "biasa":
+                case "Neutral":
                 default:
                     moodResId = R.drawable.neutral_emoji;
                     break;

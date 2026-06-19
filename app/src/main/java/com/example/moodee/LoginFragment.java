@@ -60,11 +60,6 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        binding.txtForgotPassword.setOnClickListener(v -> {
-            NavHostFragment.findNavController(LoginFragment.this)
-                    .navigate(R.id.action_LoginFragment_to_ForgotPasswordFragment);
-        });
-
         binding.txtSignUp.setOnClickListener(v -> {
             NavHostFragment.findNavController(LoginFragment.this)
                     .navigate(R.id.action_LoginFragment_to_RegisterFragment);

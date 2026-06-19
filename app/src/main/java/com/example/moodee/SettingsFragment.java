@@ -15,7 +15,12 @@ import com.example.moodee.databinding.FragmentSettingsBinding;
 import com.example.moodee.database.AppDatabase;
 import com.example.moodee.database.Journal;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 
 public class SettingsFragment extends Fragment {
 
@@ -42,10 +47,16 @@ public class SettingsFragment extends Fragment {
         binding.txtProfileName.setText(name);
         binding.txtJoinedDate.setText("@" + username);
 
-        // 3. Ambil data dari Database untuk menghitung jumlah entri
+        // 3. Ambil data dari Database
         AppDatabase db = AppDatabase.getDatabase(requireContext());
         List<Journal> journals = db.journalDao().getAllJournals(userId);
+        
+        // Tampilkan jumlah entri
         binding.txtEntriesCount.setText(String.valueOf(journals.size()));
+        
+        // Hitung dan tampilkan Streak
+        int streak = calculateStreak(journals);
+        binding.txtStreakCount.setText(String.valueOf(streak));
 
         // 4. Logika Tombol Setup PIN
         binding.btnSetupPin.setOnClickListener(v -> {
@@ -58,11 +69,56 @@ public class SettingsFragment extends Fragment {
         // 5. Logika Tombol Logout
         binding.btnLogout.setOnClickListener(v -> {
             Toast.makeText(getContext(), "Logged Out", Toast.LENGTH_SHORT).show();
-            // Hapus sesi saat logout (PIN juga akan terhapus jika clear() semua, 
-            // atau biarkan jika ingin PIN tetap ada untuk user tersebut)
             pref.edit().clear().apply();
             NavHostFragment.findNavController(this).navigate(R.id.action_global_LoginFragment);
         });
+    }
+
+    private int calculateStreak(List<Journal> journals) {
+        if (journals == null || journals.isEmpty()) return 0;
+
+        // Gunakan HashSet untuk menyimpan tanggal unik (format: dd-MM-yyyy)
+        // Kita pakai Locale ID karena format tanggal yang disimpan dalam bahasa Indonesia
+        SimpleDateFormat storedFormat = new SimpleDateFormat("EEEE, dd MMMM", new Locale("id", "ID"));
+        SimpleDateFormat normalizeFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        
+        HashSet<String> uniqueDates = new HashSet<>();
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+
+        for (Journal j : journals) {
+            try {
+                Date d = storedFormat.parse(j.date);
+                Calendar c = Calendar.getInstance();
+                c.setTime(d);
+                c.set(Calendar.YEAR, currentYear); // Asumsikan tahun sekarang karena data tidak simpan tahun
+                uniqueDates.add(normalizeFormat.format(c.getTime()));
+            } catch (Exception e) {
+                // Jika gagal parse, lewati
+            }
+        }
+
+        int streak = 0;
+        Calendar checkCal = Calendar.getInstance();
+        
+        // 1. Cek apakah ada jurnal hari ini
+        String today = normalizeFormat.format(checkCal.getTime());
+        
+        if (!uniqueDates.contains(today)) {
+            // Jika hari ini belum nulis, cek kemarin
+            checkCal.add(Calendar.DATE, -1);
+            String yesterday = normalizeFormat.format(checkCal.getTime());
+            if (!uniqueDates.contains(yesterday)) {
+                return 0; // Kemarin juga nggak nulis, streak putus
+            }
+        }
+
+        // 2. Hitung mundur ke belakang
+        while (uniqueDates.contains(normalizeFormat.format(checkCal.getTime()))) {
+            streak++;
+            checkCal.add(Calendar.DATE, -1);
+        }
+
+        return streak;
     }
 
     @Override

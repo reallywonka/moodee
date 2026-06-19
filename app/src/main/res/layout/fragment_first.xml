@@ -24,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:fontFamily="@font/poppins_black"
             android:text="moodee"
             android:textColor="@color/green"
             android:textSize="32sp"
@@ -33,8 +34,9 @@
             android:layout_width="312dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_medium"
             android:gravity="center"
-            android:text="moodee is a journaling app"
+            android:text="moodee is a daily journal app designed to provide you with a peaceful space in which to reflect and record your thoughts"
             android:textColor="@color/brown"
             android:textSize="14sp" />
     </LinearLayout>
