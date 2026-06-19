@@ -85,6 +85,9 @@
         <action
             android:id="@+id/action_navigation_journal_to_MoodSelectionFragment"
             app:destination="@id/MoodSelectionFragment" />
+        <action
+            android:id="@+id/action_navigation_journal_to_WritingFragment"
+            app:destination="@id/WritingFragment" />
     </fragment>
 
     <fragment

@@ -21,4 +21,7 @@ public interface JournalDao {
 
     @Query("SELECT * FROM journals WHERE userId = :userId ORDER BY date DESC")
     List<Journal> getAllJournals(int userId);
+
+    @Query("SELECT * FROM journals WHERE id = :journalId LIMIT 1")
+    Journal getJournalById(int journalId);
 }

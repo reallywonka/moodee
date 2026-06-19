@@ -9,14 +9,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.moodee.database.Journal;
 import com.example.moodee.databinding.ItemJournalBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalViewHolder> {
 
-    private final List<Journal> journalList;
+    private List<Journal> journalList = new ArrayList<>();
+    private OnJournalClickListener listener;
 
-    public JournalAdapter(List<Journal> journalList) {
-        this.journalList = journalList;
+    public interface OnJournalClickListener {
+        void onJournalClick(Journal journal);
+        void onDeleteClick(Journal journal);
+    }
+
+    public void setOnJournalClickListener(OnJournalClickListener listener) {
+        this.listener = listener;
+    }
+
+    public void setJournals(List<Journal> journals) {
+        this.journalList = journals;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -28,12 +40,9 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull JournalViewHolder holder, int viewType) {
-        Journal journal = journalList.get(viewType);
-        holder.binding.txtItemDate.setText(journal.date);
-        holder.binding.txtItemTitle.setText(journal.title);
-        holder.binding.txtItemContent.setText(journal.content);
-        holder.binding.txtItemMood.setText(journal.mood);
+    public void onBindViewHolder(@NonNull JournalViewHolder holder, int position) {
+        Journal journal = journalList.get(position);
+        holder.bind(journal, listener);
     }
 
     @Override
@@ -42,11 +51,53 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
     }
 
     static class JournalViewHolder extends RecyclerView.ViewHolder {
-        final ItemJournalBinding binding;
+        private final ItemJournalBinding binding;
 
-        public JournalViewHolder(@NonNull ItemJournalBinding binding) {
+        public JournalViewHolder(ItemJournalBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+        }
+
+        public void bind(Journal journal, OnJournalClickListener listener) {
+            binding.txtItemTitle.setText(journal.title);
+            binding.txtItemDate.setText(journal.date);
+            binding.txtItemContent.setText(journal.content);
+
+            // Set mood icon
+            int moodResId;
+            switch (journal.mood.toLowerCase()) {
+                case "keren":
+                    moodResId = R.drawable.cool_emoji;
+                    break;
+                case "baik":
+                    moodResId = R.drawable.happy_emoji;
+                    break;
+                case "buruk":
+                    moodResId = R.drawable.bad_emoji;
+                    break;
+                case "sangat buruk":
+                    moodResId = R.drawable.reallybad_emoji;
+                    break;
+                case "biasa":
+                default:
+                    moodResId = R.drawable.neutral_emoji;
+                    break;
+            }
+            binding.imgItemMood.setImageResource(moodResId);
+
+            // Click listener for the whole item
+            itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onJournalClick(journal);
+                }
+            });
+
+            // Click listener for delete button
+            binding.btnDeleteJournal.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onDeleteClick(journal);
+                }
+            });
         }
     }
 }
