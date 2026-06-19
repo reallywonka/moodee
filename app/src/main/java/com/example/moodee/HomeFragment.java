@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.moodee.database.AppDatabase;
 import com.example.moodee.databinding.FragmentHomeBinding;
@@ -37,8 +38,9 @@ public class HomeFragment extends Fragment {
         binding.txtGreeting.setText("Good Morning, " + name + "!");
 
         binding.btnStartWriting.setOnClickListener(v -> {
-            // Kita akan buat navigasi ke WritingFragment segera!
-            // NavHostFragment.findNavController(this).navigate(R.id.action_navigation_home_to_WritingFragment);
+            // Arahkan ke MoodSelectionFragment
+            NavHostFragment.findNavController(this)
+                .navigate(R.id.action_navigation_home_to_MoodSelectionFragment);
         });
     }
 

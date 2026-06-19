@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_secondary"
+    tools:context=".MoodSelectionFragment">
+
+    <!-- Close Button -->
+    <ImageView
+        android:id="@+id/btn_close_mood"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/green" />
+
+    <!-- Question -->
+    <TextView
+        android:id="@+id/txt_mood_question"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/poppins_black"
+        android:gravity="center"
+        android:text="Bagaimana kabarmu sekarang?"
+        android:textColor="@color/green"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_close_mood" />
+
+    <!-- Date and Time Row -->
+    <LinearLayout
+        android:id="@+id/layout_date_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_mood_question">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@android:drawable/ic_menu_my_calendar"
+            app:tint="@color/green" />
+
+        <TextView
+            android:id="@+id/txt_mood_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Hari Ini, 17 Juni"
+            android:textColor="@color/green"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="16dp"
+            android:layout_height="1dp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@android:drawable/ic_menu_recent_history"
+            app:tint="@color/green" />
+
+        <TextView
+            android:id="@+id/txt_mood_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="19.35"
+            android:textColor="@color/green"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Mood Icons -->
+    <LinearLayout
+        android:id="@+id/layout_mood_icons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/layout_date_time">
+
+        <!-- Keren -->
+        <LinearLayout
+            android:id="@+id/mood_keren"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/img_keren"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/cool_emoji"
+                android:alpha="0.5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="keren"
+                android:textColor="@color/green"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Baik -->
+        <LinearLayout
+            android:id="@+id/mood_baik"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/img_baik"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/happy_emoji"
+                android:alpha="0.5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="baik"
+                android:textColor="@color/green"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Biasa -->
+        <LinearLayout
+            android:id="@+id/mood_biasa"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/img_biasa"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/neutral_emoji"
+                android:alpha="0.5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="biasa"
+                android:textColor="@color/green"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Buruk -->
+        <LinearLayout
+            android:id="@+id/mood_buruk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/img_buruk"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/bad_emoji"
+                android:alpha="0.5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="buruk"
+                android:textColor="@color/green"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Sangat Buruk -->
+        <LinearLayout
+            android:id="@+id/mood_sangat_buruk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/img_sangat_buruk"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/reallybad_emoji"
+                android:alpha="0.5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="sangat buruk"
+                android:gravity="center"
+                android:textColor="@color/green"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Continue Button -->
+    <LinearLayout
+        android:id="@+id/btn_continue_mood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_continue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/green"
+            android:src="@android:drawable/ic_media_next"
+            app:fabSize="normal"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Lanjutkan"
+            android:textColor="@color/green"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
