@@ -38,7 +38,7 @@ public class SettingsFragment extends Fragment {
         String name = pref.getString("name", "User");
         String username = pref.getString("username", "username");
 
-        // 2. Tampilkan Nama dan Username ke Layar sesuai rencana rombak
+        // 2. Tampilkan Nama dan Username ke Layar
         binding.txtProfileName.setText(name);
         binding.txtJoinedDate.setText("@" + username);
 
@@ -47,10 +47,19 @@ public class SettingsFragment extends Fragment {
         List<Journal> journals = db.journalDao().getAllJournals(userId);
         binding.txtEntriesCount.setText(String.valueOf(journals.size()));
 
-        // Logika Tombol Logout
+        // 4. Logika Tombol Setup PIN
+        binding.btnSetupPin.setOnClickListener(v -> {
+            Bundle args = new Bundle();
+            args.putString("mode", "create");
+            NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_navigation_settings_to_PinFragment, args);
+        });
+
+        // 5. Logika Tombol Logout
         binding.btnLogout.setOnClickListener(v -> {
             Toast.makeText(getContext(), "Logged Out", Toast.LENGTH_SHORT).show();
-            // Hapus sesi saat logout
+            // Hapus sesi saat logout (PIN juga akan terhapus jika clear() semua, 
+            // atau biarkan jika ingin PIN tetap ada untuk user tersebut)
             pref.edit().clear().apply();
             NavHostFragment.findNavController(this).navigate(R.id.action_global_LoginFragment);
         });

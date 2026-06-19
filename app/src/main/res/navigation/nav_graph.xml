@@ -15,6 +15,16 @@
             app:destination="@id/FirstFragment"
             app:popUpTo="@id/LandingFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_LandingFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_LandingFragment_to_PinFragment"
+            app:destination="@id/PinFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -94,7 +104,11 @@
         android:id="@+id/navigation_settings"
         android:name="com.example.moodee.SettingsFragment"
         android:label="Settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_navigation_settings_to_PinFragment"
+            app:destination="@id/PinFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/MoodSelectionFragment"
@@ -111,6 +125,18 @@
         android:name="com.example.moodee.WritingFragment"
         android:label="Write"
         tools:layout="@layout/fragment_writing" />
+
+    <fragment
+        android:id="@+id/PinFragment"
+        android:name="com.example.moodee.PinFragment"
+        android:label="PIN Security"
+        tools:layout="@layout/fragment_pin">
+        <action
+            android:id="@+id/action_PinFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <action
         android:id="@+id/action_global_LoginFragment"

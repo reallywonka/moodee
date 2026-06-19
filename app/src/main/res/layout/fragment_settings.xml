@@ -119,12 +119,29 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
+    <!-- Security Button -->
+    <Button
+        android:id="@+id/btn_setup_pin"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Atur Keamanan PIN"
+        android:textAllCaps="false"
+        android:textColor="@color/green"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statsCard"
+        app:strokeColor="@color/green" />
+
     <!-- Logout Button -->
     <Button
         android:id="@+id/btn_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="#FF5252"
         android:text="Log Out"
         android:textAllCaps="false"
@@ -132,6 +149,6 @@
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/statsCard" />
+        app:layout_constraintTop_toBottomOf="@id/btn_setup_pin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

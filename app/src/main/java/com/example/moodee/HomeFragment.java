@@ -12,8 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.moodee.database.AppDatabase;
 import com.example.moodee.databinding.FragmentHomeBinding;
+
+import java.util.Calendar;
 
 public class HomeFragment extends Fragment {
 
@@ -34,8 +35,19 @@ public class HomeFragment extends Fragment {
         SharedPreferences pref = requireContext().getSharedPreferences("moodee_pref", Context.MODE_PRIVATE);
         String name = pref.getString("name", "User");
 
-        // 2. Tampilkan sapaan dinamis
-        binding.txtGreeting.setText("Good Morning, " + name + "!");
+        // 2. Tampilkan sapaan dinamis berdasarkan waktu
+        int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+        String greeting;
+
+        if (hour >= 4 && hour < 12) {
+            greeting = "Good Morning";
+        } else if (hour >= 12 && hour < 18) {
+            greeting = "Good Afternoon";
+        } else {
+            greeting = "Good Evening";
+        }
+
+        binding.txtGreeting.setText(greeting + ", " + name + "!");
 
         binding.btnStartWriting.setOnClickListener(v -> {
             // Arahkan ke MoodSelectionFragment
