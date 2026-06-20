@@ -124,38 +124,53 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Security Button -->
-    <Button
-        android:id="@+id/btn_setup_pin"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="140dp"
-        android:layout_height="55dp"
+    <!-- Buttons Container -->
+    <LinearLayout
+        android:id="@+id/layout_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Set your PIN"
-        android:textAllCaps="false"
-        android:textColor="@color/green"
-        app:cornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/statsCard"
-        app:strokeColor="@color/green" />
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/statsCard">
 
-    <!-- Logout Button -->
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="#FF5252"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Log Out"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:cornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_setup_pin" />
+        <Button
+            android:id="@+id/btn_edit_profile"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Edit Profile"
+            android:textAllCaps="false"
+            android:textColor="@color/green"
+            app:cornerRadius="15dp"
+            app:strokeColor="@color/green" />
+
+        <Button
+            android:id="@+id/btn_setup_pin"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Set your PIN"
+            android:textAllCaps="false"
+            android:textColor="@color/green"
+            app:cornerRadius="15dp"
+            app:strokeColor="@color/green" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#FF5252"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Log Out"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:cornerRadius="15dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

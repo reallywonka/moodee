@@ -99,6 +99,9 @@
         <action
             android:id="@+id/action_navigation_settings_to_PinFragment"
             app:destination="@id/PinFragment" />
+        <action
+            android:id="@+id/action_navigation_settings_to_EditProfileFragment"
+            app:destination="@id/EditProfileFragment" />
     </fragment>
 
     <fragment
@@ -128,6 +131,12 @@
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
     </fragment>
+
+    <fragment
+        android:id="@+id/EditProfileFragment"
+        android:name="com.example.moodee.EditProfileFragment"
+        android:label="Edit Profile"
+        tools:layout="@layout/fragment_edit_profile" />
 
     <action
         android:id="@+id/action_global_LoginFragment"
