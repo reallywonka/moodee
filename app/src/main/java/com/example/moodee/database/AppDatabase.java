@@ -11,7 +11,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract JournalDao journalDao();
 
-    private static AppDatabase INSTANCE;
+    private static volatile AppDatabase INSTANCE;
 
     public static AppDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {

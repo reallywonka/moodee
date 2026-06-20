@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -48,10 +49,35 @@ public class JournalFragment extends Fragment implements JournalAdapter.OnJourna
         // 2. Load Data
         loadJournals();
 
-        // 3. Fab Add Journal
+        // 3. Setup Search Feature
+        setupSearch();
+
+        // 4. Fab Add Journal
         binding.fabAddJournal.setOnClickListener(v -> {
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_navigation_journal_to_MoodSelectionFragment);
+        });
+    }
+
+    private void setupSearch() {
+        binding.searchViewJournal.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.filter(newText);
+                
+                // Tampilkan empty state jika hasil pencarian kosong
+                if (adapter.getItemCount() == 0) {
+                    binding.layoutEmptyState.setVisibility(View.VISIBLE);
+                } else {
+                    binding.layoutEmptyState.setVisibility(View.GONE);
+                }
+                return true;
+            }
         });
     }
 
@@ -62,6 +88,17 @@ public class JournalFragment extends Fragment implements JournalAdapter.OnJourna
         if (userId != -1) {
             List<Journal> journals = db.journalDao().getAllJournals(userId);
             adapter.setJournals(journals);
+
+            // Handle Empty State awal
+            if (journals.isEmpty()) {
+                binding.layoutEmptyState.setVisibility(View.VISIBLE);
+                binding.rvJournals.setVisibility(View.GONE);
+                binding.searchCard.setVisibility(View.GONE); // Sembunyikan search jika data 0
+            } else {
+                binding.layoutEmptyState.setVisibility(View.GONE);
+                binding.rvJournals.setVisibility(View.VISIBLE);
+                binding.searchCard.setVisibility(View.VISIBLE);
+            }
         }
     }
 

@@ -15,6 +15,7 @@ import java.util.List;
 public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalViewHolder> {
 
     private List<Journal> journalList = new ArrayList<>();
+    private List<Journal> journalListFull = new ArrayList<>(); // Copy of the full list for filtering
     private OnJournalClickListener listener;
 
     public interface OnJournalClickListener {
@@ -28,6 +29,23 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
 
     public void setJournals(List<Journal> journals) {
         this.journalList = journals;
+        this.journalListFull = new ArrayList<>(journals); // Create a deep copy
+        notifyDataSetChanged();
+    }
+
+    // Method to filter the list
+    public void filter(String text) {
+        journalList = new ArrayList<>();
+        if (text.isEmpty()) {
+            journalList.addAll(journalListFull);
+        } else {
+            text = text.toLowerCase().trim();
+            for (Journal item : journalListFull) {
+                if (item.title.toLowerCase().contains(text) || item.content.toLowerCase().contains(text)) {
+                    journalList.add(item);
+                }
+            }
+        }
         notifyDataSetChanged();
     }
 
@@ -63,7 +81,7 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
             binding.txtItemDate.setText(journal.date);
             binding.txtItemContent.setText(journal.content);
 
-            // Set mood icon (Gunakan ignore case agar lebih aman)
+            // Set mood icon
             int moodResId;
             String mood = journal.mood != null ? journal.mood : "Neutral";
 
